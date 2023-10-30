@@ -1,0 +1,25 @@
+
+<label for="typeahead-basic">Search by Email:</label>
+<div class="input-search">
+    <input [(ngModel)]="search" id="typeahead-basic" type="text" class="form-control" />
+    <button type="button"(click)="searchItems()"class="btn btn-primary" >Search</button>
+    <button type="button"(click)="resetItems()"class="btn btn-danger" >reset</button>
+</div>
+
+<div class="cards">
+    <div class="card my-5 " *ngFor="let card of card">
+        <img [src]="card.image" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{card.username}}</h5>
+            <p class="card-text">{{card.email}}</p>
+            <p class="card-text">{{card.phone}}</p>
+            <div *ngIf="card.is_verified; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock> <button type="text"class="btn btn-success">
+                verified</button>
+            </ng-template>
+            <ng-template #elseBlock><button type="text"class="btn btn-danger ">
+                not verified</button> </ng-template>
+        </div>
+    </div>
+
+</div>
